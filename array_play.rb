@@ -53,10 +53,10 @@ movies << {
   stars: ["Leonardo DiCaprio", "JGL"]
 }
 
-puts "-lowbudget-"
-puts lowbudget = movies.select{ |mov| mov[:budget] < 100}
-puts "----LEO----"
-puts leo = movies.select{ |mov| mov[:stars].include? "Leonardo DiCaprio"}
+puts "--lowbudget--"
+puts lowbudget = movies.select{ |mov| mov[:budget] < 100}.map{|mov| mov[:title]}
+puts "-----LEO-----"
+puts leo = movies.select{ |mov| mov[:stars].include? "Leonardo DiCaprio"}.map{|mov| mov[:title]}
 
 spent = 0
 movies.each{ |mov| spent += mov[:budget]}
