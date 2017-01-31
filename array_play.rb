@@ -1,12 +1,16 @@
 #homework 2
 
 
-def fourletters (sen)
-  numletters(sen, 4)
+def four_words (text)
+  how_many_words(text, 4)
 end
 
-def numletters (sen, num)
-  sen.split.select { |word| word.length == num}
+def how_many_words (text, num)
+  text.split.select { |word| word.length == num}
+end
+
+def starring? (movies, star)
+  movies.select{|mov| mov[:stars].include?(star)}.map{|mov| mov[:title]}
 end
 
 #first part
@@ -19,7 +23,7 @@ puts short_name.join(", ")
 #second part
 
 sentence = "Ruby is actually kind of fun once you get used to it."
-puts fourletters(sentence)
+puts four_words(sentence)
 
 
 #third part
@@ -53,11 +57,19 @@ movies << {
   stars: ["Leonardo DiCaprio", "JGL"]
 }
 
-puts "--lowbudget--"
+puts "--low budget--"
 puts lowbudget = movies.select{ |mov| mov[:budget] < 100}.map{|mov| mov[:title]}
 puts "-----LEO-----"
-puts leo = movies.select{ |mov| mov[:stars].include? "Leonardo DiCaprio"}.map{|mov| mov[:title]}
+puts starring?(movies, "Leonardo DiCaprio")
 
 spent = 0
 movies.each{ |mov| spent += mov[:budget]}
 puts "Total budget for all movies is $#{spent} MILLION MONIES!"
+
+
+
+puts"________________________________________"
+
+
+puts starring?(movies, "Leonardo DiCaprio")
+grouped_by_star = []
