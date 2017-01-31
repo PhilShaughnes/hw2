@@ -13,6 +13,7 @@ def starring? (movies, star)
   movies.select{|mov| mov[:stars].include?(star)}.map{|mov| mov[:title]}
 end
 
+
 #first part
 our_class = [ "Rob", "David", "Nancy", "Kalea", "Laura", "Dave", "Demetra", "Kendrick", "Phil", "Ben", "Michael", "Miguel"]
 short_name = []
@@ -28,7 +29,6 @@ puts four_words(sentence)
 
 #third part
 lowbudget = []
-leo = []
 
 movies = []
 movies << {
@@ -67,9 +67,11 @@ movies.each{ |mov| spent += mov[:budget]}
 puts "Total budget for all movies is $#{spent} MILLION MONIES!"
 
 
+grouped_by_star = []
 
 puts"________________________________________"
+movies.map{|mov| mov[:stars]}.flatten.uniq.each do |star|
+  grouped_by_star << {star: star, movies: starring?(movies, star)}
+end
 
-
-puts starring?(movies, "Leonardo DiCaprio")
-grouped_by_star = []
+puts grouped_by_star
