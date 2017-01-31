@@ -2,7 +2,7 @@
 
 
 def fourletters (sen)
-  sen.split.select { |word| word.length == 4}
+  numletters(sen, 4)
 end
 
 def numletters (sen, num)
@@ -20,8 +20,6 @@ puts short_name.join(", ")
 
 sentence = "Ruby is actually kind of fun once you get used to it."
 puts fourletters(sentence)
-#puts numletters(sentence, 4) #commented out because not required
-
 
 
 #third part
@@ -59,3 +57,7 @@ puts "-lowbudget-"
 puts lowbudget = movies.select{ |mov| mov[:budget] < 100}
 puts "----LEO----"
 puts leo = movies.select{ |mov| mov[:stars].include? "Leonardo DiCaprio"}
+
+spent = 0
+movies.each{ |mov| spent += mov[:budget]}
+puts "Total budget for all movies is $#{spent} MILLION MONIES!"
